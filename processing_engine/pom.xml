@@ -87,8 +87,12 @@
       <artifactId>gson</artifactId>
       <version>${gson.version}</version>
     </dependency>
+  <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.9.6</version>
+    </dependency>
   </dependencies>
-
   <build>
     <finalName>processing.engine</finalName>
     <plugins>
