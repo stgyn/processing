@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- database connection properties -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/AccProcessing</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">admin</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+        <!-- show mysql queries output in console -->
+        <property name="hibernate.show_sql">true</property>
+
+        <!-- manage automatic database creation -->
+        <property name="hibernate.hbm2ddl.auto">create</property>
+
+        <!-- dbcp connection pool configuration -->
+        <property name="hibernate.dbcp.initialSize">10</property>
+        <property name="hibernate.dbcp.maxTotal">20</property>
+        <property name="hibernate.dbcp.maxIdle">-1</property>
+        <property name="hibernate.dbcp.minIdle">5</property>
+        <property name="hibernate.dbcp.maxWaitMillis">-1</property>
+
+        <!-- add annotated resources here -->
+        <mapping class="com.memorynotfound.hibernate.Book"/>
+
+    </session-factory>
+</hibernate-configuration>

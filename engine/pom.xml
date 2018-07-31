@@ -4,54 +4,62 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.processing</groupId>
   <artifactId>engine</artifactId>
-  <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
 
-  <name>engine Maven Webapp</name>
-  <url>http://maven.apache.org</url>
+  <packaging>war</packaging>
 
   <properties>
     <java.version>1.8</java.version>
     <javax.servlet>3.1.0</javax.servlet>
-    <org.springframework.version>5.0.4.RELEASE</org.springframework.version>
+    <spring-framework.version>4.3.18.RELEASE</spring-framework.version>
     <activemq.version>5.15.4</activemq.version>
   </properties>
 
+  <name>engine</name>
+  <url>http://maven.apache.org</url>
 
   <dependencies>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+	  <version>${spring-framework.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jms</artifactId>
+	  <version>${spring-framework.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-all</artifactId>
+	  <version>5.15.4</version>
+    </dependency>
 	<dependency>
-	  <groupId>javax.servlet</groupId>
-	  <artifactId>javax.servlet-api</artifactId>
-	  <version>${javax.servlet}</version>
-	  <scope>provided</scope>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+	  <version>3.1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+	  <version>2.8.5</version>
     </dependency>
 	<dependency>
 	  <groupId>org.springframework</groupId>
 	  <artifactId>spring-core</artifactId>
-	  <version>${org.springframework.version}</version>
+	  <version>${spring-framework.version}</version>
     </dependency>
 	<dependency>
 	  <groupId>org.springframework</groupId>
 	  <artifactId>spring-context</artifactId>
-	  <version>${org.springframework.version}</version>
-    </dependency>
-	<dependency>
-	  <groupId>org.springframework</groupId>
-	  <artifactId>spring-jms</artifactId>
-	  <version>${org.springframework.version}</version>
-    </dependency>
-	<dependency>
-	  <groupId>org.apache.activemq</groupId>
-	  <artifactId>activemq-spring</artifactId>
-	  <version>${activemq.version}</version>
+	  <version>${spring-framework.version}</version>
     </dependency>
 	<dependency>
 	  <groupId>ch.qos.logback</groupId>
 	  <artifactId>logback-classic</artifactId>
 	  <version>1.1.7</version>
     </dependency>
-</dependencies>
-  
+  </dependencies>
   <build>
     <finalName>Processing Engine</finalName>
     <plugins>

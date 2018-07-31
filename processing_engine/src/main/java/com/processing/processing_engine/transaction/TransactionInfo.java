@@ -1,15 +1,31 @@
-package com.processing.engine.model;
+package com.processing.processing_engine.transaction;
+import javax.persistence.Column;
 
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-public class TransactionClass implements Serializable {
+public class TransactionInfo {
+	@JsonInclude(Include.NON_NULL)
 	private int id;
-	private String uuid;
-	private String transaction_type;
-	private int transaction_account;
-	private double transaction_amount;
-	private String transaction_json;
 
+	@JsonInclude(Include.NON_NULL)
+	private String uuid;
+	
+	@JsonInclude(Include.NON_NULL)
+	private String transaction_type;
+	
+	@JsonInclude(Include.NON_NULL)	
+	private int transaction_account;
+	
+	@JsonInclude(Include.NON_NULL)	
+	private String transaction_account_img;
+	
+	@JsonInclude(Include.NON_NULL)	
+	private double transaction_amount;
+	
+	@JsonInclude(Include.NON_NULL)	
+	private String transaction_json;
+	
 	public int getID () {
 		return this.id;
 	}
@@ -42,6 +58,14 @@ public class TransactionClass implements Serializable {
 		this.transaction_account = transaction_account;
 	}
 
+	public String GetAccountImg () {
+		return this.transaction_account_img;
+	}
+	
+	public void setAccountImg(String transaction_account_img) {
+		this.transaction_account_img = transaction_account_img;
+	}
+	
 	public double GetAmount () {
 		return this.transaction_amount;
 	}
@@ -57,10 +81,5 @@ public class TransactionClass implements Serializable {
 
 	public void setContent(String transaction_json) {
 		this.transaction_json = transaction_json;
-	}
-	
-	@Override
-	public String toString() {
-		return "[id=" + this.id + ", uuid=" + this.uuid + ", transaction_type=" + this.transaction_type + ", transaction_account=" + this.transaction_account + ", transaction_amount=" + this.transaction_amount + ", transaction_json=" + this.transaction_json + "]";
 	}
 }
