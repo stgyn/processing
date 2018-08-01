@@ -11,17 +11,16 @@ import org.springframework.web.servlet.DispatcherServlet;
 
 import com.processing.processing_engine.configutation.AppConfiguration;
 
-@ComponentScan
 public class ApplicationInitializer implements WebApplicationInitializer {
-	public void onStartup(ServletContext container) throws ServletException {
+	
+	@Override
+	public void onStartup(ServletContext servletContext) throws ServletException {
 		System.out.println("1 !!!!!!!!!!!!!!");
-        AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-        ctx.register(AppConfiguration.class);
-		System.out.println("2 !!!!!!!!!!!!!!");
-        ctx.setServletContext(container);
-        ServletRegistration.Dynamic servlet = container.addServlet("dispatcher", new DispatcherServlet(ctx));
-        servlet.setLoadOnStartup(1);
-        servlet.addMapping("/");
+        AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
+        appContext.register(AppConfiguration.class);
+        ServletRegistration.Dynamic dispatcher = servletContext.addServlet("SpringDispatcher", new DispatcherServlet(appContext));
+        dispatcher.setLoadOnStartup(1);
+        dispatcher.addMapping("/processing");
 		System.out.println("3 !!!!!!!!!!!!!!");
     }
 }

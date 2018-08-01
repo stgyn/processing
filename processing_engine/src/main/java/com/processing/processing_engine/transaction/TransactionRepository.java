@@ -1,7 +1,9 @@
 package com.processing.processing_engine.transaction;
 
 import java.util.List;
-import org.springframework.data.repository.CrudRepository;
+import com.processing.processing_engine.transaction.Transaction;
 
-public interface TransactionRepository extends CrudRepository<Transaction, Long>{
+public interface TransactionRepository {
+	List<Transaction> list();
+	int save(Transaction transaction);
 }

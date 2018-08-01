@@ -21,67 +21,86 @@
   </properties>
 
   <dependencies>
+  <!--  Spring Core -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>
       <version>${spring-framework.version}</version>
     </dependency>
+  <!--  Spring ORM -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-orm</artifactId>
       <version>${spring-framework.version}</version>
     </dependency>
+  <!--  Spring Context -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
       <version>${spring-framework.version}</version>
     </dependency>
+  <!--  Spring JPA -->
     <dependency>
       <groupId>org.springframework.data</groupId>
       <artifactId>spring-data-jpa</artifactId>
       <version>${spring-framework.data.version}</version>
     </dependency>
+  <!--  Hibernate Core -->
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
       <version>5.3.3.Final</version>
     </dependency>
+  <!--  Hibernate Entitymanager -->
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-entitymanager</artifactId>
       <version>5.3.3.Final</version>
       <scope>runtime</scope>
     </dependency>
+  <!--  PostgresSQL Connector -->
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>42.2.4</version>
     </dependency>
+  <!-- Hibernate-C3P0 Integration -->
     <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-dbcp2</artifactId>
-      <version>2.5.0</version>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-c3p0</artifactId>
+      <version>5.3.3.Final</version>
     </dependency>
+  <!-- c3p0 -->
+    <dependency>
+      <groupId>com.mchange</groupId>
+      <artifactId>c3p0</artifactId>
+      <version>0.9.5.2</version>
+    </dependency>
+  <!-- Spring MVC -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
 	  <version>${spring-framework.version}</version>
     </dependency>
+  <!-- Spring JMS -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-jms</artifactId>
 	  <version>${spring-framework.version}</version>
     </dependency>
+  <!-- ActiveMQ -->
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-all</artifactId>
 	  <version>${activemq.version}</version>
     </dependency>
+  <!-- Servlet Dependency -->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
 	  <version>${javax.servlet.version}</version>
     </dependency>
+  <!-- GSON -->
     <dependency>
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>

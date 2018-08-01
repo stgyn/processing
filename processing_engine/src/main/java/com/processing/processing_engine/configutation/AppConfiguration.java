@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.annotation.JmsListenerConfigurer;
@@ -16,6 +17,7 @@ import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerEndpointRegistrar;
 import org.springframework.jms.config.SimpleJmsListenerEndpoint;
 import org.springframework.jms.core.JmsTemplate;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.core.env.Environment;
 
 import com.processing.processing_engine.jms.TransactionListener;
@@ -23,7 +25,9 @@ import com.processing.processing_engine.jms.TransactionListener;
 @Configuration
 @EnableJms
 @ComponentScan(basePackages = "com.processing")
+@EnableTransactionManagement
 @PropertySource("classpath:jms.properties")
+@Import({DataBaseConfig.class})
 public class AppConfiguration implements JmsListenerConfigurer{
 	@Autowired
 	private Environment env;
@@ -31,9 +35,6 @@ public class AppConfiguration implements JmsListenerConfigurer{
 	@Autowired
 	private TransactionListener listener;
 
-//	@Autowired
-//	DataSource dataSource;
-	
 	@Bean
 	public ActiveMQConnectionFactory connectionFactory(){
 		System.out.println("!!!!!!!!!!!!!! "+env.getProperty("BROKER_URL"));
@@ -62,7 +63,7 @@ public class AppConfiguration implements JmsListenerConfigurer{
 
 	@Override
 	public void configureJmsListeners(JmsListenerEndpointRegistrar registrar) {
-		for (int i = 1; i <= 10; i++) {
+		for (int i = 1; i <= Integer.parseInt(env.getProperty("COUNT_QUEUES")); i++) {
 			SimpleJmsListenerEndpoint endpoint = new SimpleJmsListenerEndpoint();
 			endpoint.setId("str"+"_"+i);
 			endpoint.setDestination("transaction-queue_"+i);
