@@ -6,17 +6,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "transactions")
 public class Transaction implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SequenceGenerator(name="transactions_ids",sequenceName="transactions_ids", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="transactions_ids")
+	@Column(name="id", unique=true, nullable=false)
 	private int id;
 	
 	@Column(name = "transaction_uuid")
-	private String uuid;
+	private String transaction_uuid;
 	
 	@Column(name = "transaction_type")
 	private String transaction_type;
@@ -33,16 +36,20 @@ public class Transaction implements Serializable {
 	@Column(name = "transaction_json")	
 	private String transaction_json;
 
+	@Column(name = "transaction_addinfo")
+	private String transaction_addinfo;
+	
 	Transaction() {		
 	}
 	
-	Transaction(String uuid, String transaction_type, int transaction_account, String transaction_account_img, double transaction_amount, String transaction_json) {		
-		this.uuid = uuid;
+	public Transaction(String transaction_uuid, String transaction_type, int transaction_account, String transaction_account_img, double transaction_amount, String transaction_json, String transaction_addinfo) {		
+		this.transaction_uuid = transaction_uuid;
 		this.transaction_type = transaction_type;
 		this.transaction_account = transaction_account;
 		this.transaction_account_img = transaction_account_img;
 		this.transaction_amount = transaction_amount;
 		this.transaction_json = transaction_json;
+		this.transaction_addinfo = transaction_addinfo;
 	}
 	
 	
@@ -55,11 +62,11 @@ public class Transaction implements Serializable {
 	}
 	
 	public String getUUID() {
-		return this.uuid;
+		return this.transaction_uuid;
 	}
 
-	public void setUUID(String uuid) {
-		this.uuid = uuid;
+	public void setUUID(String transaction_uuid) {
+		this.transaction_uuid = transaction_uuid;
 	}
 
 	public String getType() {
@@ -102,9 +109,17 @@ public class Transaction implements Serializable {
 	public void setContent(String transaction_json) {
 		this.transaction_json = transaction_json;
 	}
+
+	public void setAddInfo(String transaction_addinfo) {
+		this.transaction_addinfo = transaction_addinfo;
+	}
+
+	public String getAddInfo() {
+		return this.transaction_addinfo;
+	}
 	
 	@Override
 	public String toString() {
-		return "[id=" + this.id + ", uuid=" + this.uuid + ", transaction_type=" + this.transaction_type + ", transaction_account=" + this.transaction_account + ", transaction_account_img=" + this.transaction_account_img + ", transaction_amount=" + this.transaction_amount + ", transaction_json=" + this.transaction_json + "]";
+		return "[id=" + this.id + ", transaction_uuid=" + this.transaction_uuid + ", transaction_type=" + this.transaction_type + ", transaction_account=" + this.transaction_account + ", transaction_account_img=" + this.transaction_account_img + ", transaction_amount=" + this.transaction_amount + ", transaction_json=" + this.transaction_json + ", transaction_addinfo=" + this.transaction_addinfo + "]";
 	}
 }

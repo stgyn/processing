@@ -106,6 +106,35 @@
       <artifactId>gson</artifactId>
       <version>${gson.version}</version>
     </dependency>
+  <!-- Oracle AQ -->
+    <dependency>
+      <groupId>oracle</groupId>
+      <artifactId>jms</artifactId>
+      <version>1.5.0_51</version>
+    </dependency>
+    <dependency>
+      <groupId>oracle</groupId>
+      <artifactId>ojdbc6</artifactId>
+      <version>11.2.0.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.25</version>
+    </dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-autoconfigure</artifactId>
+    <version>2.0.4.RELEASE</version>
+</dependency>
+
+    
+    <dependency>
+        <groupId>org.springframework.data</groupId>
+        <artifactId>spring-data-oracle</artifactId>
+        <version>1.2.1.RELEASE</version>
+    </dependency>
+
   <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
